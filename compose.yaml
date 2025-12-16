@@ -1,0 +1,16 @@
+services:
+  livebook:
+    image: ghcr.io/livebook-dev/livebook:0.18.2
+    environment:
+      LIVEBOOK_DATA_PATH: /data
+    volumes:
+      - type: bind
+        source: ./livebook/data
+        target: /data
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+  ibkr_client_portal_gateway:
+    build: ibkr_client_portal_gateway
+    ports:
+      - "5000:5000"
