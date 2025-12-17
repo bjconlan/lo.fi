@@ -1,8 +1,8 @@
 services:
   livebook:
     image: ghcr.io/livebook-dev/livebook:0.18.2
-    environment:
-      LIVEBOOK_DATA_PATH: /data
+    # environment:
+    #   LIVEBOOK_DATA_PATH: /data
     volumes:
       - type: bind
         source: ./livebook/data
