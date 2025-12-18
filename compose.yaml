@@ -1,0 +1,27 @@
+services:
+  kdb-x:
+    build: kdb-x
+    working_dir: /data/jupyter/notebooks
+    command: ["--ip=0.0.0.0", "--port=8888", "--no-browser"]
+    volumes:
+      - type: bind
+        source: ./kdb-x/hdb
+        target: /data/kdb/hdb
+      - type: bind
+        source: ./kdb-x/notebooks
+        target: /data/jupyter/notebooks
+    ports:
+      - "8888:8888"
+    secrets:
+      - source: kc_lic
+        target: /home/nonroot/.kx/kc.lic
+    depends_on:
+      - ibkr-client-portal-gateway
+  ibkr-client-portal-gateway:
+    build: ibkr-client-portal-gateway
+    ports:
+      - "5000:5000"
+
+secrets:
+  kc_lic:
+    file: kdb-x/kc.lic
