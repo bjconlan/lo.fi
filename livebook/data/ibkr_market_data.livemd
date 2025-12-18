@@ -1,0 +1,45 @@
+<!--
+ livebook:{
+"autosave_interval_s":60
+}
+-->
+
+# Ibkr market data
+
+```elixir
+Mix.install([
+  {:ibkr_api, "~> 1.0.0"}
+], config: [
+  ibkr_api: [
+    host: "https://ibkr-client-portal-gateway",  # Default Client Portal Gateway host
+    port: 5000,  # Default Client Portal Gateway port
+    timeout: 30_000  # Request timeout in milliseconds
+  ]
+])
+```
+
+## Auth & Accounts
+
+```elixir
+{:ok, response} = IbkrApi.ClientPortal.Auth.ping_server()
+```
+
+```elixir
+{:ok, accounts} = IbkrApi.ClientPortal.Portfolio.list_accounts()
+
+# Print account IDs
+# accounts |> Enum.each(fn account -> IO.puts(account.account_id) end)
+```
+
+```elixir
+account_id = hd(accounts).account_id
+{:ok, summary} = IbkrApi.ClientPortal.Portfolio.account_summary(account_id)
+```
+
+## Market Data & Trading
+
+```elixir
+symbol = "AAPL"
+{:ok, contracts} = IbkrApi.ClientPortal.Contract.search_contracts(symbol)
+
+```
