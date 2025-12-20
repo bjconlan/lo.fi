@@ -12,9 +12,9 @@ services:
         target: /data/jupyter/notebooks
     ports:
       - "8888:8888"
-    secrets:
-      - source: kc_lic
-        target: /home/nonroot/.kx/kc.lic
+    # secrets:
+    #   - source: kc_lic
+    #     target: /home/nonroot/.kx/kc.lic
     depends_on:
       - ibkr-client-portal-gateway
   ibkr-client-portal-gateway:
@@ -22,6 +22,6 @@ services:
     ports:
       - "5000:5000"
 
-secrets:
-  kc_lic:
-    file: kdb-x/kc.lic
+# secrets:
+#   kc_lic:
+#     file: kdb-x/kc.lic
