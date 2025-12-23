@@ -1,10 +1,4 @@
-The KDB-X license file should be provided using the repository path
-`kdb-x/kc.lic` which will be mounted as a secret file in the kdb-x container.
-
-The the kc.lic is the base64 decoded license key provided by kx and can be
-created by performing `echo $KDBX_LICENSE_B64 | base64 -d > kc.lic`.
-
-Jupyter notebook doesn't have any passwords sets so relys on having access to
-the docker compose's logs to identify the token string or alternatively
-running `/home/nonroot/.local/bin/jupyter server list` to provide the running
-instance's token string.
+When run as a devcontainer the jupyter lab server will not be started as the
+vscode will use the jupyter notebook plugin to perform evaluation. If run
+via `docker compose` then the juypter lab instance will started and should be
+connected to using the provided url in the docker compose logs (with token)
