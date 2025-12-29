@@ -1,3 +1,2 @@
 .vscode
-*.env
-kdb-x/kc.lic
+.env

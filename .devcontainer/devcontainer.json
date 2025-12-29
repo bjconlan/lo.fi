@@ -12,7 +12,7 @@
 
 	// The 'service' property is the name of the service for the container that VS Code should
 	// use. Update this value and .devcontainer/docker-compose.yml to the real service name.
-	"service": "kdb-x",
+	"service": "frontend",
 
 	// The optional 'workspaceFolder' property is the path VS Code should open by default when
 	// connected. This is typically a file mount in .devcontainer/docker-compose.yml
@@ -42,13 +42,13 @@
 		"vscode": {
 			"extensions": [
 				"kx.kdb",
-				"ms-toolsai.jupyter",
-				"ms-python.python"
+				"ms-python.python",
+				"ms-toolsai.jupyter"
 			]
 		}
 	}
 
-	// "onCreateCommand": "ln -s /usr/bin/python3.13 /home/nonroot/.local/bin/python;python -c 'import pykx; pykx.install_into_QHOME()'"
+	// "onCreateCommand": "pip install ipykernel"
 
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "devcontainer"
