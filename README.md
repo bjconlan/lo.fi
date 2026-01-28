@@ -18,3 +18,19 @@ ideas:
   - strategy scaling for capital size
 
 (49/51% coin flip is optimized to only invest 2% (< 2% is too small a gain, 4% makes loss))
+
+## environment
+
+Currentlty the .env file contains the following keys
+
+| Variable        | Description                                               |
+|-----------------|-----------------------------------------------------------|
+| KDB_LICENSE_B64 | Kdb-x licence key as provided by kdb                      |
+| TWS_USERID      | Interactive brokers user id to authenticate with          |
+| TWS_PASSWORD    | Interactive brokers user password to authenticate with    |
+| TRADING_MODE    | Interactive brokers platform trading mode (paper or live) |
+| READ_ONLY_API   | Interactive brokers option for making data read only      |
+
+
+See https://github.com/gnzsnz/ib-gateway-docker for more details regarding the
+environment variables
