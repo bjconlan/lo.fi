@@ -7,7 +7,7 @@ USER nonroot
 RUN curl -sL https://portal.dl.kx.com/assets/raw/kdb-x/install_kdb/${KDB_VERSION}/install_kdb.sh | sed -e '/    setup_license/d' | bash -s -- -y --b64lic "AA=="
 
 # use explicit pip install while developing... should be replaced with `RUN pip install -r requirements.txt`
-RUN pip install --pre pykx && pip install ib_async streamlit
+RUN pip install --pre pykx && pip install ipykernel temporalio ib_async
 
 # required for pykx to perform subprocess execution in kx.tick* commands
 RUN python3.13 -c 'import pykx; pykx.install_into_QHOME()'
