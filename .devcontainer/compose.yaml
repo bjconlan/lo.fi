@@ -12,12 +12,14 @@ services:
 
     volumes:
       # Update this to wherever you want VS Code to mount the folder of your project
-      - .:/workspaces/lo.fi:cached
+      - .:/workspaces/lo.fi:z,cached
     env_file:
       - path: .devcontainer/devcontainer.env
         required: false
-    # environment:
-    #   LIVEBOOK_PASSWORD: ${LIVEBOOK_PASSWORD}
+    environment:
+      LIVEBOOK_HOME: /workspaces/lo.fi/livebook/data
+      LIVEBOOK_DATA_PATH: /workspaces/lo.fi/livebook/data
+      LIVEBOOK_TOKEN_ENABLED: "false"
 
     # Uncomment the next four lines if you will use a ptrace-based debugger like C++, Go, and Rust.
     # cap_add:
@@ -26,5 +28,5 @@ services:
     #   - seccomp:unconfined
 
     # Overrides default command so things don't shut down after the process ends.
-    # command: sleep infinity
+    command: /app/bin/server
  

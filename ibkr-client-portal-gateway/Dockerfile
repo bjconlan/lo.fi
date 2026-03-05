@@ -7,7 +7,7 @@ RUN wget https://download2.interactivebrokers.com/portal/clientportal.gw.zip \
 
 FROM cgr.dev/chainguard/jre AS runner
 WORKDIR /svc
-COPY --from=builder /work .
+COPY --from=builder --chmod=755 --chown=65532:65532 /work .
 COPY index.html root/webapps/demo/index.html
 COPY doc.json root/webapps/demo/doc.json
 COPY conf.yaml root/conf.yaml

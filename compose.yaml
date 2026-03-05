@@ -1,12 +1,10 @@
 services:
   livebook:
-    image: ghcr.io/livebook-dev/livebook:0.18.2
-    # environment:
-    #   LIVEBOOK_DATA_PATH: /data
+    image: ghcr.io/livebook-dev/livebook:0.19.0
+    environment:
+      LIVEBOOK_DATA_PATH: /data
     volumes:
-      - type: bind
-        source: ./livebook/data
-        target: /data
+      - ./livebook/data:/data:z
     ports:
       - "8080:8080"
       - "8081:8081"
